@@ -1,7 +1,8 @@
 #include <stdio.h>
 int main() {
-    int i, valid=0, resto, primdig, segdig, cnpj[13];
-    int multi[13] = {6,5,4,3,2,9,8,7,6,5,4,3,2};
+    int i, digito, cnpj[14];
+    int multi1[12] = {5,4,3,2,9,8,7,6,5,4,3,2};
+    int multi2[13] = {6,5,4,3,2,9,8,7,6,5,4,3,2};
     
     //Solicitando dados do usuário
     printf("Digite os 14 dígitos do CNPJ a ser validado colocando espaço entre cada dígito: \n");
