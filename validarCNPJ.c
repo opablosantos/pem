@@ -6,8 +6,13 @@ int main() {
     
     //Solicitando dados do usuário
     printf("Digite os 14 dígitos do CNPJ a ser validado colocando espaço entre cada dígito: \n");
-    for (i=0; i<=13;i++) {
-        scanf ("%d", &cnpj[i]);
+    gets(entrada);
+    
+    for(i=0; i<strlen(entrada); i++) {
+        if (entrada[i]>='0' && entrada[i]<='9') {
+            cnpj[j] = entrada[i] - '0';
+            j++;
+        }
     }
     
     int calculaDigito (int cnpj[], int multi[], int N) {
