@@ -10,7 +10,6 @@ int main() {
         scanf ("%d", &cnpj[i]);
     }
     
-    
     int calculaDigito (int cnpj[], int multi[], int N) {
         int valid=0, resto, i;
         for (i=0; i<=N; i++) {
