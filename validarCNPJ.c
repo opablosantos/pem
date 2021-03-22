@@ -11,29 +11,19 @@ int main() {
     }
     
     
-    //Validando o primeiro dígito
-    for (i=0; i<=11; i++) {
-        valid += cnpj[i]*multi[i+1];
-    }
-    resto = valid%11;
-    if (resto<2) {
-        primdig = 0;
-    }
-    else {
-        primdig = 11-resto;
-    }
-    
-    //Validando o segundo dígito
-    valid = 0;
-    for (i=0; i<=12; i++) {
+    int calculaDigito (int cnpj[], int multi[], int N) {
+        int valid=0, resto, i;
+        for (i=0; i<=N; i++) {
         valid += cnpj[i]*multi[i];
     }
     resto = valid%11;
     if (resto<2) {
-        segdig = 0;
+        digito = 0;
     }
     else {
-        segdig = 11-resto;
+        digito = 11-resto;
+    }
+    return digito;
     }
     
     //Imprimindo o CNPJ com frufru
