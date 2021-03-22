@@ -48,7 +48,8 @@ int main() {
         printf ("%d", cnpj[i]);
     }
     //Imprimindo o resultado da validação
-    if (primdig==cnpj[12] && segdig==cnpj[13]) {
+    if (calculaDigito(cnpj, multi1, 11) == cnpj[12] && 
+       calculaDigito(cnpj, multi2, 12) == cnpj[13]) {
         printf(" é válido!");
     }
     else {
