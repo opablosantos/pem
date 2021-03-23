@@ -5,8 +5,8 @@ int main() {
     int multi2[13] = {6,5,4,3,2,9,8,7,6,5,4,3,2};
     
     //Solicitando dados do usuário
-    printf("Digite os 14 dígitos do CNPJ a ser validado colocando espaço entre cada dígito: \n");
-    gets(entrada);
+    printf("Digite os 14 dígitos do CNPJ a ser validado: \n");
+    fgets(entrada, 50, stdin);
     
     for(i=0; i<strlen(entrada); i++) {
         if (entrada[i]>='0' && entrada[i]<='9') {
