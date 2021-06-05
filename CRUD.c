@@ -16,7 +16,6 @@ struct ficha {
 int procurar(char procurado[], struct ficha vetor[], int num_fichas) {
     int i;
     for(i=0; i<num_fichas; i++) {
-        //if(strcmp(procurado, vetor[i].nome) == 0) {
         if(strstr(vetor[i].nome, procurado) != NULL) {
            return i;
         }
@@ -30,13 +29,14 @@ int main() {
     char opcao[10]="0";
     setlocale(LC_ALL, "Portuguese");
     
-    while(opcao[0] != '5') {
+    while(opcao[0] != '6') {
         printf("\nEntre com a opção desejada:\n");
         printf("\n1) Inserir ficha:");
         printf("\n2) Procurar por nome:");
         printf("\n3) Listar toda a base:");
-        printf("\n4) Excluir por nome:");
-        printf("\n5) Sair\n\n");
+        printf("\n4) Alterar por nome:");
+        printf("\n5) Excluir por nome:");
+        printf("\n6) Sair\n\n");
         gets(opcao);
         
         if(opcao[0] == '1') /*inserir*/ {
@@ -81,7 +81,29 @@ int main() {
                 printf("A base de dados está vazia!\n");
         }
         
-        if(opcao[0] == '4') /*excluir*/ {
+        if(opcao[0] == '4') /*update*/ {
+        char procurado[40];
+        printf("\nEntre com o nome que deseja atualizar:");
+        gets(procurado);
+        int i = procurar(procurado, agenda, fichas_existentes);
+        if(i != -1) {
+            printf("\nEntre com um nome:");
+            gets(agenda[i].nome);
+            printf("\nEntre com um telefone:");
+            gets(agenda[i].telefone);
+            printf("\nEntre com um endereço:");
+            gets(agenda[i].endereco);
+            printf("\nEntre com um email:");
+            gets(agenda[i].email);
+            printf("\nEntre com uma data de nascimento:");
+            gets(agenda[i].nascimento);
+            printf("\nEntre com um nome:");
+        }
+        else
+        printf("\n\nNome não encontrado\n");
+        }
+        
+        if(opcao[0] == '5') /*excluir*/ {
             char procurado[40];
             printf("\nEntre com o nome que sera excluído:");
             gets(procurado);
