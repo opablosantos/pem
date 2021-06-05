@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <locale.h>
 #include <stdlib.h>
+
 struct ficha {
     char nome[40];
     char telefone[20];
@@ -15,7 +16,8 @@ struct ficha {
 int procurar(char procurado[], struct ficha vetor[], int num_fichas) {
     int i;
     for(i=0; i<num_fichas; i++) {
-        if(strcmp(procurado, vetor[i].nome) == 0) {
+        //if(strcmp(procurado, vetor[i].nome) == 0) {
+        if(strstr(vetor[i].nome, procurado) != NULL) {
            return i;
         }
     }
