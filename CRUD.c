@@ -12,6 +12,12 @@ struct ficha {
     char nascimento[10];
     bool ativo;
     };
+
+void minusculo(char str[]) {   
+    int i, tam=strlen(str);
+    for(i=0; i<tam; i++)
+        str[i] = tolower(str[i]);
+}
     
 int procurar(char procurado[], struct ficha vetor[], int num_fichas) {
     int i;
