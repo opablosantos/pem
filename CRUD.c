@@ -3,7 +3,6 @@
 #include <stdbool.h>
 #include <locale.h>
 #include <stdlib.h>
-
 struct ficha {
     char nome[40];
     char telefone[20];
@@ -12,6 +11,16 @@ struct ficha {
     char nascimento[10];
     bool ativo;
     };
+    
+int procurar(char procurado[], struct ficha vetor[], int num_fichas) {
+    int i;
+    for(i=0; i<num_fichas; i++) {
+        if(strcmp(procurado, vetor[i].nome) == 0) {
+           return i;
+        }
+    }
+    return -1;
+}
 
 int main() {
     struct ficha agenda[100];
@@ -49,22 +58,13 @@ int main() {
             char procurado[40];
             printf("\nEntre com o nome procurado:");
             gets(procurado);
-            
-            bool achei = false; //nao achei
-            int i;
-            for(i=0; i<fichas_existentes; i++) {
-             //Ignorando Maiusculas/Minusculas:
-             //if(strcasecmp(procurado, agenda[i].nome) == 0)
-                if(strcmp(procurado, agenda[i].nome) == 0) {
-                   achei = true; //achei!!
-                   printf("\n\nO telefone de %s é %s\n",agenda[i].nome, agenda[i].telefone);
-                   //depois de achar nao preciso procurar mais
-                   break;
-                }
+            int i = procurar(procurado, agenda, fichas_existentes);
+            if(i != -1) {
+                printf("Nome: %s\nTelefone: %s\nEndereço:%s\nemail: %s\nData de nascimento:%s\n\n", 
+                    agenda[i].nome, agenda[i].telefone, agenda[i].endereco, agenda[i].email, agenda[i].nascimento);
             }
-            if(achei == false) {
-             printf("\n\nNome não encontrado\n");
-            }
+            else
+            printf("\n\nNome não encontrado\n");
         }
         
         if(opcao[0] == '3') /*listar tudo*/ {
@@ -83,23 +83,15 @@ int main() {
             char procurado[40];
             printf("\nEntre com o nome que sera excluído:");
             gets(procurado);
-            
-            bool achei = false; //nao achei
-            int i;
-            for(i=0; i<fichas_existentes; i++) {
-            //Ignorando Maiusculas/Minusculas:
-            //if(strcasecmp(procurado, agenda[i].nome) == 0)
-                if(strcmp(procurado, agenda[i].nome) == 0) {
-                    achei = true; //achei!!
-                    printf("\n\nO telefone de %s, que é %s, será removido\n", agenda[i].nome, agenda[i].telefone);
-                    agenda[i].ativo = false;
-                    break;
-                }
+            int i = procurar(procurado, agenda, fichas_existentes);
+            if(i != -1) {
+                printf("\n\nTodos os dados de %s serão removidos\n", agenda[i].nome);
+                agenda[i].ativo = false;
             }
-            if(achei == false) {
-                printf("\n\nNome não encontrado\n");
-            }
+            else
+            printf("\n\nNome não encontrado\n");
         }
     }
     return 0;
 }
+
