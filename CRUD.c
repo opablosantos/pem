@@ -21,8 +21,12 @@ void minusculo(char str[]) {
     
 int procurar(char procurado[], struct ficha vetor[], int num_fichas) {
     int i;
-    for(i=0; i<num_fichas; i++) {
-        if(strstr(vetor[i].nome, procurado) != NULL) {
+    char nomeMinusculo[40];
+    minusculo(procurado);
+	for(i=0; i<num_fichas; i++) {   
+        strcpy(nomeMinusculo, vetor[i].nome);
+	    minusculo(nomeMinusculo);
+	    if(strstr(nomeMinusculo, procurado) != NULL) {
            return i;
         }
     }
