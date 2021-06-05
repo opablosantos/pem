@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <locale.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 struct ficha {
     char nome[40];
