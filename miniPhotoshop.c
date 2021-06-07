@@ -22,6 +22,38 @@ void diminuirBrilho(int** original, int linhas, int colunas) {
 	}
 }
 
+void moldura(int** original, int linhas, int colunas, int maxValor) {
+    int l, c;
+	
+	//cima
+	for(l=0; l<0.05*linhas; l++) {
+	    for(c=0; c<colunas; c++) {
+	        original[l][c] = original[l][c]*0.5;
+		}
+	}
+	
+	//baixo
+	for(l=0.95*linhas; l<1.0*linhas; l++) {
+	    for(c=0; c<colunas; c++) {
+	        original[l][c] = original[l][c]*0.5;
+		}
+	}
+	
+	//esquerda
+	for(l=0.05*linhas; l<0.95*linhas; l++) {
+	    for(c=0; c<0.05*colunas; c++) {
+	        original[l][c] = original[l][c]*0.5;
+		}
+	}
+	
+	//direita
+	for(l=0.05*linhas; l<0.95*linhas; l++) {
+	    for(c=0.95*colunas; c<1.0*colunas; c++) {
+	        original[l][c] = original[l][c]*0.5;
+		}
+	}
+}
+
 void borrar(int** original, int linhas, int colunas, int tamanhoBorrao)
 {	int l, c;
 	/*
@@ -146,7 +178,7 @@ int main(int argc, char * argv[])
 				borrar(mat, linhas, colunas, tamanhoBorrao);		
 				break;
 			case '8':
-				//moldura(mat, linhas, colunas, maxValor);
+				moldura(mat, linhas, colunas, maxValor);
 				break;
 		}
 	}
